@@ -39,19 +39,20 @@
 // server.listen(3030);
 
 const express = require("express");
+const path = require("path");
 
 const app = express();
 
 app.get("/", (request, response) => {
-  response.json({
-    name: "junaid",
-  });
+  response.sendFile(path.resolve(__dirname, "index.html"));
 });
 
 app.get("/about-us", (request, response) => {
-  response.send({
-    name: "hello about",
-  });
+  response.sendFile(path.resolve(__dirname, "about.html"));
+});
+
+app.get("/contact-us", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "contact.html"));
 });
 
 app.listen(3030, () => {
